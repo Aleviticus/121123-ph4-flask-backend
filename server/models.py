@@ -9,4 +9,23 @@ metadata = MetaData(naming_convention={
 
 db = SQLAlchemy(metadata=metadata)
 
+class Truck(db.Model):
+
+    __tablename__ = "truck_table"
+
+    id = db.Column( db.Integer, primary_key=True )
+    name = db.Column( db.String, unique=True )
+    location = db.Column ( db.String )
+    model = db.Column ( db.String )
+    insurance = db.Column ( db.Integer )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "model": self. model,
+            "location": self.location,
+            "insurance": self.insurance
+        }
+
 # write your models here!
